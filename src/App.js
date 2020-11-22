@@ -1,12 +1,12 @@
 import { BrowserRouter, Route } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import Deck from "./Deck";
 import Map from "./Map";
 import Logo from "./Logo";
 import Profile from "./Profile";
 import ProfilePic from "./ProfilePic";
 import Uploader from "./Uploader";
-
+import axios from "./axios";
 export default class App extends React.Component {
     constructor() {
         super();
@@ -25,24 +25,24 @@ export default class App extends React.Component {
 
     componentDidMount() {
         console.log("App just mounted");
-        // axios
-        //     .get("/user")
-        //     .then(({ data }) => {
-        //         const { first, last, email, url, id } = data;
-        //         // console.log(data);
-        //         this.setState({
-        //             id: id,
-        //             first: first,
-        //             last: last,
-        //             email: email,
-        //             imgUrl: url,
-        //         });
-        //         // console.log(this.state);
-        //         // console.log("data in componentDidMount: ", data);
-        //     })
-        //     .catch((e) => {
-        //         console.log("error in axios: ", e);
-        //     });
+        axios
+            .get("/user")
+            .then(({ data }) => {
+                const { first, last, email, url, id } = data;
+                // console.log(data);
+                this.setState({
+                    id: id,
+                    first: first,
+                    last: last,
+                    email: email,
+                    imgUrl: url,
+                });
+                // console.log(this.state);
+                // console.log("data in componentDidMount: ", data);
+            })
+            .catch((e) => {
+                console.log("error in axios: ", e);
+            });
     }
 
     toggleComponent() {
