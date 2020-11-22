@@ -1,19 +1,28 @@
+import { BrowserRouter, Route } from "react-router-dom";
 import React, { useState } from "react";
 import Deck from "./Deck";
-
-/*
-🔄 FLASHCARDS CODE STARTS HERE 🔄
-*/
+import Map from "./Map";
 
 export default function App({ flashcard }) {
     const [flashcards, setFlashcards] = useState(sampleFlashcards);
     return (
-        <div>
-            <Deck flashcards={flashcards} />
-        </div>
+        <BrowserRouter>
+            <div>
+                <Route
+                    path="/deck"
+                    render={() => <Deck flashcards={flashcards} />}
+                />
+            </div>
+            <div>
+                <Route path="/map" render={() => <Map />} />
+            </div>
+        </BrowserRouter>
     );
 }
 
+/*
+🔄 FLASHCARDS CODE STARTS HERE 🔄
+*/
 // hardcoding questions //
 
 const sampleFlashcards = [
