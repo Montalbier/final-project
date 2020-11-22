@@ -1,5 +1,5 @@
 import React from "react";
-import L from "leaflet";
+// import L from "leaflet";
 
 export default function Map() {
     var mymap = L.map("mapid").setView([52.52, 13.4], 13);
