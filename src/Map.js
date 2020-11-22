@@ -3,7 +3,7 @@ import L from "leaflet";
 
 export default function Map() {
     var mymap = L.map("mapid").setView([52.52, 13.4], 13);
-    var marker = L.marker([52.52, 13.4]).addTo(mymap);
+    // var marker = L.marker([52.52, 13.4]).addTo(mymap);
     var popup = L.popup();
     // var circle = L.circle();
     // var polygon = L.polygon();
@@ -26,11 +26,26 @@ export default function Map() {
         popup
             .setLatLng(e.latlng)
             .setContent(
-                "Share your thoughts, feelings, questions about this place." +
-                <textarea></textarea>
+                "<textarea>Share your thoughts, feelings, questions about this place...</textarea>"
             )
             .openOn(mymap);
+        L.marker(e.latlng).addTo(mymap);
     }
+
+    function keyCheck(e) {
+        if (e.key === "Enter") {
+            // console.log("user wants to send message");
+            e.preventDefault();
+            console.log("value in textarea: ", e.target.value);
+            e.target.value = "";
+        }
+    }
+
+    <textarea
+        onKeyDown={keyCheck}
+        placeholder="
+        Share your thoughts, feelings, questions about this place..."
+    />;
 
     // useEffect(() => {
     //     console.log("map component mounted");
@@ -47,5 +62,11 @@ export default function Map() {
 
     mymap.on("click", onMapClick);
 
-    return <h1>Hello World</h1>;
+    return (
+        <h2>
+            {/* Share your thoughts, feelings, questions about the selected place on
+            the map: */}
+        </h2>
+        // <textarea></textarea>
+    );
 }
