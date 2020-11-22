@@ -45,3 +45,5 @@ body {
 .card .back {
     transform: rotateY(180deg);
 }
+
+#mapid { height: 800px; }
