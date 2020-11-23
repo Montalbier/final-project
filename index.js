@@ -84,7 +84,7 @@ OUR ROUTES GO HERE (between this line and the get("*")
 
 app.get("/welcome", (req, res) => {
     if (req.session.userId) {
-        res.redirect("/");
+        res.redirect("/user");
     } else {
         res.sendFile(__dirname + "/index.html");
     }
