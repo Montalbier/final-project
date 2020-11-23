@@ -10,6 +10,17 @@ CREATE TABLE users (
 );
 
 DROP TABLE IF EXISTS reset_codes CASCADE;
+<<<<<<< HEAD
+=======
+CREATE TABLE reset_codes(
+    id SERIAL   PRIMARY KEY,
+    email       VARCHAR NOT NULL,
+    code        VARCHAR NOT NULL,
+    timestamp   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );
+
+DROP TABLE IF EXISTS popup CASCADE;
+>>>>>>> 798663c28a11345615ffe953928e55b3bb935872
 CREATE TABLE reset_codes(
     id SERIAL   PRIMARY KEY,
     email       VARCHAR NOT NULL,

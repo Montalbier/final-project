@@ -98,7 +98,12 @@ header {
     height: 800px;
 } */
 
-textarea {
+.popup {
     height: 240px;
     width: 160px;
+}
+
+.leaflet-container {
+    width: 100%;
+    height: 100vh;
 }

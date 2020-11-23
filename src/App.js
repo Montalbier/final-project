@@ -1,12 +1,13 @@
 import { BrowserRouter, Route } from "react-router-dom";
 import React from "react";
 import Deck from "./Deck";
-import Map from "./Map";
+import Travelmap from "./Travelmap";
 import Logo from "./Logo";
 import Profile from "./Profile";
 import ProfilePic from "./ProfilePic";
 import Uploader from "./Uploader";
 import axios from "./axios";
+
 export default class App extends React.Component {
     constructor() {
         super();
@@ -139,7 +140,7 @@ export default class App extends React.Component {
                     />
                 </div>
                 <div>
-                    <Route path="/map" render={() => <Map />} />
+                    <Route path="/map" render={() => <Travelmap />} />
                 </div>
             </BrowserRouter>
         );
