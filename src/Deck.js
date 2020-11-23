@@ -15,13 +15,28 @@ export default function Deck({ flashcards }) {
     };
 
     return (
-        <div className="card-deck">
-            <Flashcard
-                onReflip={onReflip}
-                flashcard={actualFlashcard}
-                key={actualFlashcard.id}
-            />
-            ;
-        </div>
+        <>
+            <div>
+                <div className="good-learn">
+                    <img
+                        style={{ width: "600px", margin: "20px 0 20px 0" }}
+                        src="/assets/1goodlearn.png"
+                    />
+                </div>
+                <div>
+                    <p className="good-learn-text">
+                        Try to remember the word and only turn the card when you
+                        thought enough about it!{" "}
+                    </p>
+                </div>
+                <div className="card-deck">
+                    <Flashcard
+                        onReflip={onReflip}
+                        flashcard={actualFlashcard}
+                        key={actualFlashcard.id}
+                    />
+                </div>
+            </div>
+        </>
     );
 }

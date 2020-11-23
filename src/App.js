@@ -237,21 +237,13 @@ const sampleFlashcards = [
         english: "Cheers / Bless you",
         spanish: "Salud",
     },
-    {
-        id: 14,
-        english: "Can you help me with this?",
-        spanish: "¿Me puedes ayudar con esto?",
-    },
+
     {
         id: 15,
         english: "I need help",
         spanish: "Necesito ayuda",
     },
-    {
-        id: 16,
-        english: "Can you speak slowly?",
-        spanish: "¿Puedes hablar más despacio",
-    },
+
     {
         id: 17,
         english: "Please",
