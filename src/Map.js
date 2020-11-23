@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-// import L from "leaflet";
+import L from "leaflet";
 
 export default function Map() {
     var mymap = L.map("mapid").setView([52.52, 13.4], 13);
@@ -32,14 +32,15 @@ export default function Map() {
         L.marker(e.latlng).addTo(mymap);
     }
 
-    function keyCheck(e) {
+    const keyCheck = (e) => {
         if (e.key === "Enter") {
             // console.log("user wants to send message");
             e.preventDefault();
-            console.log("value in textarea: ", e.target.value);
+            // console.log("value in textarea: ", evt.target.value);
+            // socket.emit("newMessage", e.target.value);
             e.target.value = "";
         }
-    }
+    };
 
     <textarea
         onKeyDown={keyCheck}
