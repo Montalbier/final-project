@@ -65,41 +65,20 @@ export default class App extends React.Component {
                         }}
                     >
                         <h4>
-                            <a
-                                className="navbar-text"
-                                style={{
-                                    padding: "20px",
-                                    fontSize: "16px",
-                                }}
-                                href="/deck"
-                            >
+                            <a className="navbar-text, 1" href="/deck">
                                 Flashcards
                             </a>
                         </h4>
                         <div>
                             <h4>
-                                <a
-                                    className="navbar-text"
-                                    style={{
-                                        padding: "20px",
-                                        fontSize: "16px",
-                                    }}
-                                    href="/map"
-                                >
+                                <a className="navbar-text, 2" href="/map">
                                     Map
                                 </a>
                             </h4>
                         </div>
                         <div>
                             <h4>
-                                <a
-                                    className="navbar-text"
-                                    style={{
-                                        padding: "20px",
-                                        fontSize: "16px",
-                                    }}
-                                    href="/logout"
-                                >
+                                <a className="navbar-text, 3" href="/logout">
                                     Log out
                                 </a>
                             </h4>
