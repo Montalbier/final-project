@@ -6,7 +6,7 @@ export default function Logo() {
     return (
         <div>
             <Link to="/">
-                <img id="logo" src="/assets/isologo.png" />
+                <img id="logo" src="/assets/1isologotipo.png" />
             </Link>
         </div>
     );
