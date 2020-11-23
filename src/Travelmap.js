@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import L, { icon } from "leaflet";
+import L, { icon, layerGroup } from "leaflet";
 // import { Map, MapContainer, TileLayer, LocationMarker } from "react-leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 
@@ -8,12 +8,13 @@ export default function Travelmap() {
     var mymap;
 
     function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent(
-                "<textarea onKeyDown={keyCheck}>Share your thoughts, feelings, questions about this place...</textarea>"
-            )
-            .openOn(mymap);
+        console.log("clicking on the map");
+        // popup
+        //     .setLatLng(e.latlng)
+        //     .setContent(
+        //         "<textarea onKeyDown={keyCheck}>Share your thoughts, feelings, questions about this place...</textarea>"
+        //     )
+        //     .openOn(mymap);
         // L.marker(e.latlng, { title: "pimento" }).addTo(mymap);
     }
 
@@ -27,12 +28,6 @@ export default function Travelmap() {
             e.target.value = "";
         }
     };
-
-    <textarea
-        onKeyDown={keyCheck}
-        placeholder="
-        Share your thoughts, feelings, questions about this place..."
-    />;
 
     useEffect(() => {
         mymap = L.map("mapid");
@@ -75,19 +70,25 @@ export default function Travelmap() {
         <div>
             <div id="mapid">
                 <MapContainer
-                    center={[51.505, -0.09]}
+                    center={[52.52, 13.4]}
                     zoom={13}
                     scrollWheelZoom={false}
+                    onClick={onMapClick}
                 >
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <Marker position={[51.505, -0.09]}>
+                    {/* <Marker position={[52.52, 13.4]}>
                         <Popup>
-                            A pretty CSS3 popup. <br /> Easily customizable.
+                            <textarea
+                                onKeyDown={keyCheck}
+                                placeholder="
+        Share your thoughts, feelings, questions about this place..."
+                            />
+                            ;
                         </Popup>
-                    </Marker>
+                    </Marker> */}
                 </MapContainer>
             </div>
         </div>

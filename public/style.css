@@ -82,9 +82,9 @@ header {
     transform: rotateY(180deg);
 }
 
-/* #mapid {
+#mapid {
     height: 800px;
-} */
+}
 
 .popup {
     height: 240px;
