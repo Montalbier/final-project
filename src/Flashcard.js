@@ -12,10 +12,8 @@ export default function Flashcard(props) {
 
     return (
         <div className={`card ${flip ? "flip" : " "}`} onClick={onHandleClick}>
-            <div className="front">
-                {props.flashcard.english}
-                <div className="back"> {props.flashcard.spanish}</div>
-            </div>
+            <div className="front">{props.flashcard.english}</div>
+            <div className="back"> {props.flashcard.spanish}</div>
         </div>
     );
 }

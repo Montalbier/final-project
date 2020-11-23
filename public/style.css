@@ -72,6 +72,12 @@ header {
     backface-visibility: hidden;
 }
 
+.card .front {
+    font-size: 18px;
+    color: darkslategrey;
+}
 .card .back {
+    font-weight: 900;
+    font-size: 1.3rem;
     transform: rotateY(180deg);
 }
