@@ -18,7 +18,7 @@ header {
     justify-content: space-between;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     z-index: 1;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Nunito", sans-serif;
 }
 
 #profile-pic-header {
@@ -34,8 +34,13 @@ header {
 
 /* FLASHCARDS  */
 
-.card-deck {
-    font-family: "Open Sans", sans-serif;
+.card-deck,
+.good-learn,
+.good-learn-text {
+    font-family: "Nunito", sans-serif;
+    display: flex;
+    justify-content: center;
+    color: #555b6e;
 }
 
 .card {
@@ -45,9 +50,9 @@ header {
     align-items: center;
     border-radius: 0.25rem;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.3);
-    background-color: white;
+    background-color: #555b6e;
     width: 600px;
-    height: 180px;
+    height: 200px;
     transform-style: preserve-3d;
     transition: all 0.3s ease;
     transform: perspective(1000px) rotateY(var(--rotate-y, 0))
@@ -70,15 +75,15 @@ header {
 .card .back {
     position: absolute;
     backface-visibility: hidden;
+    color: white;
 }
 
 .card .front {
-    font-size: 18px;
-    color: darkslategrey;
+    font-size: 22px;
 }
 .card .back {
-    font-weight: 900;
-    font-size: 1.3rem;
+    font-weight: 700;
+    font-size: 1.5rem;
     transform: rotateY(180deg);
 }
 

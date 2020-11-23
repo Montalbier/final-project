@@ -6,10 +6,7 @@ export default function Logo() {
     return (
         <div>
             <Link to="/">
-                <img
-                    id="logo"
-                    src="https://img.icons8.com/color/452/person-tired.png"
-                />
+                <img id="logo" src="/assets/isologo.png" />
             </Link>
         </div>
     );

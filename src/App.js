@@ -85,6 +85,20 @@ export default class App extends React.Component {
                                         padding: "20px",
                                         fontSize: "16px",
                                     }}
+                                    href="/map"
+                                >
+                                    Map
+                                </a>
+                            </h4>
+                        </div>
+                        <div>
+                            <h4>
+                                <a
+                                    className="navbar-text"
+                                    style={{
+                                        padding: "20px",
+                                        fontSize: "16px",
+                                    }}
                                     href="/logout"
                                 >
                                     Log out
@@ -157,7 +171,6 @@ export default class App extends React.Component {
 /*
 🔄 FLASHCARDS CODE STARTS HERE 🔄
 */
-// hardcoding questions //
 
 const sampleFlashcards = [
     {
@@ -225,21 +238,13 @@ const sampleFlashcards = [
         english: "Cheers / Bless you",
         spanish: "Salud",
     },
-    {
-        id: 14,
-        english: "Can you help me with this?",
-        spanish: "¿Me puedes ayudar con esto?",
-    },
+
     {
         id: 15,
         english: "I need help",
         spanish: "Necesito ayuda",
     },
-    {
-        id: 16,
-        english: "Can you speak slowly?",
-        spanish: "¿Puedes hablar más despacio",
-    },
+
     {
         id: 17,
         english: "Please",
