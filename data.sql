@@ -5,6 +5,7 @@ CREATE TABLE users (
     last VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
+<<<<<<< HEAD
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     url VARCHAR(255),
 );
@@ -17,3 +18,11 @@ CREATE TABLE popup(
   user_id INT REFERENCES users(id) NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
  );
+=======
+    url VARCHAR (255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+
+
+>>>>>>> 49501484058efbc6e433a503cd3f414d38f30a1f

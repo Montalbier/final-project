@@ -1,9 +1,35 @@
 * {
     box-sizing: border-box;
+    margin: 0px;
 }
 
 body {
     background-color: #ffecde;
+}
+
+img#logo {
+    position: relative;
+    width: 100px;
+}
+
+header {
+    /* background-color: whitesmoke; */
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    font-family: "Open Sans", sans-serif;
+}
+
+#profile-pic-header {
+    position: relative;
+    width: 20px;
+}
+
+#profile-pic-container {
+    /* background-color: blue; */
+    margin-left: 30px;
+    margin-top: 30px;
 }
 
 /* FLASHCARDS  */
@@ -26,6 +52,7 @@ body {
     transition: all 0.3s ease;
     transform: perspective(1000px) rotateY(var(--rotate-y, 0))
         translateY(var(--translate-y, 0));
+
     cursor: pointer;
     margin: 20px;
 }
@@ -42,12 +69,19 @@ body {
 .card .front,
 .card .back {
     position: absolute;
-    /* backface-visibility: hidden; */
+    backface-visibility: hidden;
 }
 
+.card .front {
+    font-size: 18px;
+    color: darkslategrey;
+}
 .card .back {
+    font-weight: 900;
+    font-size: 1.3rem;
     transform: rotateY(180deg);
 }
+<<<<<<< HEAD
 
 #mapid {
     height: 800px;
@@ -57,3 +91,5 @@ textarea {
     height: 240px;
     width: 160px;
 }
+=======
+>>>>>>> 49501484058efbc6e433a503cd3f414d38f30a1f
