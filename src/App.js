@@ -63,23 +63,45 @@ export default class App extends React.Component {
                             display: "flex",
                             flexWrap: "wrap",
                             marginTop: "40px",
+                            marginLeft: "-130px",
                         }}
                     >
                         <h4>
-                            <a className="navbar-text, 1" href="/deck">
+                            <a
+                                className="navbar-text"
+                                style={{ padding: "30px" }}
+                                href="/"
+                            >
+                                Profile
+                            </a>
+                        </h4>
+                        <h4>
+                            <a
+                                className="navbar-text"
+                                style={{ padding: "30px" }}
+                                href="/deck"
+                            >
                                 Flashcards
                             </a>
                         </h4>
                         <div>
                             <h4>
-                                <a className="navbar-text, 2" href="/map">
+                                <a
+                                    className="navbar-text"
+                                    style={{ padding: "30px" }}
+                                    href="/map"
+                                >
                                     Map
                                 </a>
                             </h4>
                         </div>
                         <div>
                             <h4>
-                                <a className="navbar-text, 3" href="/logout">
+                                <a
+                                    className="navbar-text"
+                                    style={{ padding: "30px" }}
+                                    href="/logout"
+                                >
                                     Log out
                                 </a>
                             </h4>
@@ -103,9 +125,7 @@ export default class App extends React.Component {
                     </div>
                 </header>
                 <div></div>
-                {/* <footer>
-                    thank you blablablab
-                </footer> */}
+                {/* <footer>thank you blablablab</footer> */}
 
                 <div>
                     <Route
