@@ -84,6 +84,20 @@ export default class App extends React.Component {
                                         padding: "20px",
                                         fontSize: "16px",
                                     }}
+                                    href="/map"
+                                >
+                                    Map
+                                </a>
+                            </h4>
+                        </div>
+                        <div>
+                            <h4>
+                                <a
+                                    className="navbar-text"
+                                    style={{
+                                        padding: "20px",
+                                        fontSize: "16px",
+                                    }}
                                     href="/logout"
                                 >
                                     Log out
@@ -156,7 +170,6 @@ export default class App extends React.Component {
 /*
 🔄 FLASHCARDS CODE STARTS HERE 🔄
 */
-// hardcoding questions //
 
 const sampleFlashcards = [
     {
