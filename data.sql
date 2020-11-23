@@ -18,14 +18,6 @@ CREATE TABLE reset_codes(
   );
 
 DROP TABLE IF EXISTS popup CASCADE;
-CREATE TABLE reset_codes(
-    id SERIAL   PRIMARY KEY,
-    email       VARCHAR NOT NULL,
-    code        VARCHAR NOT NULL,
-    timestamp   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-  );
-
-DROP TABLE IF EXISTS popup CASCADE;
 CREATE TABLE popup(
   id SERIAL PRIMARY KEY,
   comment TEXT,

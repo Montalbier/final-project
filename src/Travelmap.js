@@ -1,33 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import L, { icon, layerGroup } from "leaflet";
 // import { Map, MapContainer, TileLayer, LocationMarker } from "react-leaflet";
 import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+// import {Map as MapContainer, Marker, Popup, TileLayer } from “react-leaflet”;
 
 export default function Travelmap() {
     var popup;
     var mymap;
+    const [currentPos, setCurrentPos] = useState(null);
 
     function onMapClick(e) {
-        console.log("clicking on the map");
+        console.log("location: ", [e.clientX, e.clientY]);
+        // setcurrentPos()
         // popup
-        //     .setLatLng(e.latlng)
-        //     .setContent(
-        //         "<textarea onKeyDown={keyCheck}>Share your thoughts, feelings, questions about this place...</textarea>"
-        //     )
+        //     .setLatLng([52.52, 13.4])
+        //     .setContent("You clicked the map at " + e.latlng.toString())
         //     .openOn(mymap);
+
         // L.marker(e.latlng, { title: "pimento" }).addTo(mymap);
+
+        // <Popup>
+        //     <textarea
+        //         onKeyDown={keyCheck}
+        //         placeholder="Share your thoughts, feelings, questions about this place..."
+        //     />
+        // </Popup>;
+        // <Marker position={[52.52, 13.4]}></Marker>;
     }
 
-    const keyCheck = (e) => {
-        console.log("keydown is working");
-        if (e.key === "Enter") {
-            // console.log("user wants to send message");
-            e.preventDefault();
-            // console.log("value in textarea: ", evt.target.value);
-            // socket.emit("newMessage", e.target.value);
-            e.target.value = "";
-        }
-    };
+    // const keyCheck = (e) => {
+    //     console.log("keydown is working");
+    //     if (e.key === "Enter") {
+    //         // console.log("user wants to send message");
+    //         e.preventDefault();
+    //         // console.log("value in textarea: ", evt.target.value);
+    //         // socket.emit("newMessage", e.target.value);
+    //         e.target.value = "";
+    //     }
+    // };
 
     useEffect(() => {
         mymap = L.map("mapid");
@@ -68,27 +78,28 @@ export default function Travelmap() {
 
     return (
         <div>
-            <div id="mapid">
+            <div
+                id="mapid"
+                onClick={(e) => {
+                    console.log("location: ", [e.clientX, e.clientY]);
+                    setCurrentPos([e.clientX, e.clientY]);
+                    console.log("currentPos: ", currentPos);
+                }}
+            >
                 <MapContainer
                     center={[52.52, 13.4]}
                     zoom={13}
                     scrollWheelZoom={false}
-                    onClick={onMapClick}
                 >
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    {/* <Marker position={[52.52, 13.4]}>
+                    <Marker position={[52.52, 13.4]}>
                         <Popup>
-                            <textarea
-                                onKeyDown={keyCheck}
-                                placeholder="
-        Share your thoughts, feelings, questions about this place..."
-                            />
-                            ;
+                            A pretty CSS3 popup. <br /> Easily customizable.
                         </Popup>
-                    </Marker> */}
+                    </Marker>
                 </MapContainer>
             </div>
         </div>
