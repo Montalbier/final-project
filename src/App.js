@@ -189,6 +189,66 @@ const sampleFlashcards = [
         english: "Do you speak English?",
         spanish: "¿Hablas español?",
     },
+    {
+        id: 7,
+        english: "Good morning",
+        spanish: "Buenos días",
+    },
+    {
+        id: 8,
+        english: "Have a good day",
+        spanish: "Que tengas un buen día",
+    },
+    {
+        id: 9,
+        english: "I am fine, and you?",
+        spanish: "Estoy bien, ¿y tú?",
+    },
+    {
+        id: 10,
+        english: "I'm sorry",
+        spanish: "Lo siento",
+    },
+    {
+        id: 11,
+        english: "What time is it?",
+        spanish: "¿Qué hora es?",
+    },
+    {
+        id: 12,
+        english: "Yes / No",
+        spanish: "Sí / No",
+    },
+    {
+        id: 13,
+        english: "Cheers / Bless you",
+        spanish: "Salud",
+    },
+    {
+        id: 14,
+        english: "Can you help me with this?",
+        spanish: "¿Me puedes ayudar con esto?",
+    },
+    {
+        id: 15,
+        english: "I need help",
+        spanish: "Necesito ayuda",
+    },
+    {
+        id: 16,
+        english: "Can you speak slowly?",
+        spanish: "¿Puedes hablar más despacio",
+    },
+    {
+        id: 17,
+        english: "Please",
+        spanish: "Por favor",
+    },
+    {
+        id: 18,
+        english: "My name is ___ and I'm from ___",
+        spanish: "Mi nombre es ___ y soy de ___",
+    },
 ];
 
 /*
