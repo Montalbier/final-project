@@ -22,7 +22,7 @@ export default function Welcome() {
                         justifyContent: "center",
                     }}
                 >
-                    <img src="https://img.icons8.com/color/452/illuminati-symbol.png" />
+                    <img src="/assets/isologo.png" style={{ width: "450px" }} />
                 </div>
                 <div style={{ marginTop: "-20px" }}>
                     <h1>Welcome to Good Travel</h1>

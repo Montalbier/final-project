@@ -62,10 +62,9 @@ export default class App extends React.Component {
                         height: "100%",
                         minHeight: "100vh",
                         position: "relative",
-                        backgroundImage: `url("/assets/profilelandscape.png")`,
                     }}
                 >
-                    <header style={{ zIndex: "9" }}>
+                    <header>
                         <Logo />
                         <div
                             className="navbar"
