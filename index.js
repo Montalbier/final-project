@@ -302,7 +302,7 @@ app.get("/getcomments", (req, res) => {
 // adding input from popup into db
 
 app.post("/popup", (req, res) => {
-    console.log("req.body in /popup: ", req.body);
+    // console.log("req.body in /popup: ", req.body);
     const { userId } = req.session;
     const { comment } = req.body;
     const lat = req.body.coords[0];
