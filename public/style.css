@@ -20,10 +20,9 @@ img#logo:hover {
 
 header {
     /* background-color: whitesmoke; */
+    background-color: #ffecde;
     display: flex;
     justify-content: space-between;
-    /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); */
-    z-index: 1;
 }
 
 footer {

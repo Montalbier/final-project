@@ -4,7 +4,7 @@ import Deck from "./Deck";
 import Travelmap from "./Travelmap";
 import Logo from "./Logo";
 import Profile from "./Profile";
-import ProfilePic from "./ProfilePic";
+// import ProfilePic from "./ProfilePic";
 import Uploader from "./Uploader";
 import axios from "./axios";
 
@@ -59,12 +59,13 @@ export default class App extends React.Component {
                 <div
                     className="container"
                     style={{
-                        heigh: "100%",
-                        minHeight: "100%",
+                        height: "100%",
+                        minHeight: "100vh",
                         position: "relative",
+                        backgroundImage: `url("/assets/profilelandscape.png")`,
                     }}
                 >
-                    <header>
+                    <header style={{ zIndex: "9" }}>
                         <Logo />
                         <div
                             className="navbar"
