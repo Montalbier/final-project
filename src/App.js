@@ -56,100 +56,117 @@ export default class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
-                <header>
-                    <Logo />
-                    <div
-                        className="navbar"
-                        style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            marginTop: "40px",
-                            // marginLeft: "-130px",
-                        }}
-                    >
-                        <h4>
-                            <a
-                                className="navbar-text"
-                                style={{ padding: "30px" }}
-                                href="/"
-                            >
-                                Profile
-                            </a>
-                        </h4>
-                        <h4>
-                            <a
-                                className="navbar-text"
-                                style={{ padding: "30px" }}
-                                href="/deck"
-                            >
-                                Flashcards
-                            </a>
-                        </h4>
-                        <div>
+                <div
+                    className="container"
+                    style={{
+                        heigh: "100%",
+                        minHeight: "100%",
+                        position: "relative",
+                    }}
+                >
+                    <header>
+                        <Logo />
+                        <div
+                            className="navbar"
+                            style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                marginTop: "40px",
+                                // marginLeft: "-130px",
+                            }}
+                        >
                             <h4>
                                 <a
                                     className="navbar-text"
                                     style={{ padding: "30px" }}
-                                    href="/map"
+                                    href="/"
                                 >
-                                    Map
+                                    Profile
                                 </a>
                             </h4>
-                        </div>
-                        <div>
                             <h4>
                                 <a
                                     className="navbar-text"
                                     style={{ padding: "30px" }}
-                                    href="/logout"
+                                    href="/deck"
                                 >
-                                    Log out
+                                    Flashcards
                                 </a>
                             </h4>
+                            <div>
+                                <h4>
+                                    <a
+                                        className="navbar-text"
+                                        style={{ padding: "30px" }}
+                                        href="/map"
+                                    >
+                                        Map
+                                    </a>
+                                </h4>
+                            </div>
+                            <div>
+                                <h4>
+                                    <a
+                                        className="navbar-text"
+                                        style={{ padding: "30px" }}
+                                        href="/logout"
+                                    >
+                                        Log out
+                                    </a>
+                                </h4>
+                            </div>
                         </div>
-                    </div>
-                    <div style={{ marginTop: "10px", marginRight: "20px" }}>
-                        <img id="logo" src="/assets/tipologo.png" />
-                    </div>
-                </header>
-                <div></div>
-                {/* <footer>thank you blablablab</footer> */}
-
-                <div>
-                    <Route
-                        exact
-                        path="/"
-                        render={() => (
-                            <Profile
-                                imgUrl={this.state.imgUrl}
-                                first={this.state.first}
-                                last={this.state.last}
-                                id={this.state.id}
-                                toggleComponent={() => this.toggleComponent()}
+                        <div style={{ marginTop: "10px", marginRight: "20px" }}>
+                            <img id="logo" src="/assets/tipologo.png" />
+                        </div>
+                    </header>
+                    <div className="body">
+                        <div>
+                            <Route
+                                exact
+                                path="/"
+                                render={() => (
+                                    <Profile
+                                        imgUrl={this.state.imgUrl}
+                                        first={this.state.first}
+                                        last={this.state.last}
+                                        id={this.state.id}
+                                        toggleComponent={() =>
+                                            this.toggleComponent()
+                                        }
+                                    />
+                                )}
                             />
-                        )}
-                    />
-                </div>
+                        </div>
 
-                <div>
-                    {this.state.uploaderIsVisible && (
-                        <Uploader
-                            methodInApp={this.methodInApp}
-                            imgUrl={this.state.imgUrl}
-                            toggleComponent={() => this.toggleComponent()}
-                        />
-                    )}
+                        <div>
+                            {this.state.uploaderIsVisible && (
+                                <Uploader
+                                    methodInApp={this.methodInApp}
+                                    imgUrl={this.state.imgUrl}
+                                    toggleComponent={() =>
+                                        this.toggleComponent()
+                                    }
+                                />
+                            )}
+                        </div>
+                        <div>
+                            <Route
+                                path="/deck"
+                                render={() => (
+                                    <Deck flashcards={this.state.flashcards} />
+                                )}
+                            />
+                        </div>
+                        <div>
+                            <Route path="/map" render={() => <Travelmap />} />
+                        </div>
+                    </div>
                 </div>
                 <div>
-                    <Route
-                        path="/deck"
-                        render={() => (
-                            <Deck flashcards={this.state.flashcards} />
-                        )}
-                    />
-                </div>
-                <div>
-                    <Route path="/map" render={() => <Travelmap />} />
+                    <footer>
+                        This is a footer and it should be down the bottom
+                    </footer>
                 </div>
             </BrowserRouter>
         );
