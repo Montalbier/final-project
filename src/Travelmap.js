@@ -1,52 +1,103 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import L, { icon, layerGroup } from "leaflet";
 // import { Map, MapContainer, TileLayer, LocationMarker } from "react-leaflet";
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
+import {
+    MapContainer,
+    Marker,
+    Popup,
+    TileLayer,
+    useMapEvent,
+} from "react-leaflet";
+import axios from "./axios";
 // import {Map as MapContainer, Marker, Popup, TileLayer } from “react-leaflet”;
 
 export default function Travelmap() {
     var popup;
     var mymap;
-    const [currentPos, setCurrentPos] = useState(null);
+    // var popupInput;
+    const mapRef = useRef();
+    // const [currentPos, setCurrentPos] = useState(null);
+    // const [activeMarker, setActiveMarker] = React.useState(null);
+    const [markers, setMarkers] = useState([
+        // {
+        //     coords: [52.52, 13.4],
+        //     title: "My great marker... 1",
+        // },
+        // {
+        //     coords: [52.5163, 13.3777],
+        //     title: "My great marker... 2",
+        // },
+    ]);
+    const [comment, setComment] = useState("");
 
     function onMapClick(e) {
-        console.log("location: ", [e.clientX, e.clientY]);
+        // console.log("location: ", e);
         // setcurrentPos()
         // popup
         //     .setLatLng([52.52, 13.4])
         //     .setContent("You clicked the map at " + e.latlng.toString())
         //     .openOn(mymap);
-
         // L.marker(e.latlng, { title: "pimento" }).addTo(mymap);
-
         // <Popup>
-        //     <textarea
-        //         onKeyDown={keyCheck}
-        //         placeholder="Share your thoughts, feelings, questions about this place..."
-        //     />
         // </Popup>;
         // <Marker position={[52.52, 13.4]}></Marker>;
     }
 
-    // const keyCheck = (e) => {
-    //     console.log("keydown is working");
-    //     if (e.key === "Enter") {
-    //         // console.log("user wants to send message");
-    //         e.preventDefault();
-    //         // console.log("value in textarea: ", evt.target.value);
-    //         // socket.emit("newMessage", e.target.value);
-    //         e.target.value = "";
-    //     }
-    // };
+    const keyCheck = (e) => {
+        // console.log("keydown is working");
+        if (e.key === "Enter") {
+            // console.log("user wants to send message");
+            e.preventDefault();
+            // console.log("value in textarea: ", e.target.value);
+            // popupInput = e.target.value;
+            setComment(e.target.value);
+            e.target.value = "";
+
+            // console.log("markers in keyCheck: ", markers);
+        }
+    };
+
+    function setLocation(location) {
+        console.log("location setLocation ", location);
+        setMarkers([
+            ...markers,
+            {
+                title: (
+                    <textarea
+                        onKeyDown={keyCheck}
+                        placeholder="Share your thoughts, feelings, questions about this place..."
+                    />
+                ),
+                coords: [location.lat, location.lng],
+                id: location.lat + location.lng,
+            },
+        ]);
+    }
 
     useEffect(() => {
-        mymap = L.map("mapid");
+        mapRef.current = L.map("mapid");
+        // .on("click", onMapClick);
+
+        axios
+            .get("/getcomments")
+            .then(({ data }) => {
+                console.log("axios response in /getcomments: ", data);
+                if (data.comment) {
+                    setMarkers({
+                        id: data.id,
+                        comment: data.comment,
+                        time: data.created_at,
+                    });
+                }
+                console.log("markers: ", markers);
+            })
+            .catch((err) => console.log("ERROR in /getcomments: ", err));
+
         // .setView([52.52, 13.4], 13);
         // var marker = L.marker([52.52, 13.4]).addTo(mymap);
         // popup = L.popup();
         // var circle = L.circle();
         // var polygon = L.polygon();
-
         // L.tileLayer(
         //     "https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}",
         //     {
@@ -63,6 +114,33 @@ export default function Travelmap() {
         // mymap.on("click", onMapClick);
     }, []);
 
+    useEffect(() => {
+        console.log("comment: ", comment);
+        console.log("markers: ", markers);
+
+        if (!comment) {
+            return;
+        }
+
+        axios
+            .post("/popup", {
+                comment: comment,
+                coords: markers[0].coords,
+            })
+            .then(({ data }) => {
+                console.log("axios response in /popup: ", data);
+
+                // if (!abort) {
+                // setMatch(data);
+                // console.log({ match });
+                // }
+                // return () => {
+                //     abort = true;
+                // };
+            })
+            .catch((err) => console.log("axios ERROR in /popup: ", err));
+    });
+
     // useEffect(() => {
     //     console.log("map component mounted");
     // if (markerRef.current) {
@@ -75,33 +153,56 @@ export default function Travelmap() {
     // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
     // circle.bindPopup("I am a circle.");
     // polygon.bindPopup("I am a polygon.");
+    console.log("markers at bottom: ", markers);
 
     return (
         <div>
             <div
                 id="mapid"
-                onClick={(e) => {
-                    console.log("location: ", [e.clientX, e.clientY]);
-                    setCurrentPos([e.clientX, e.clientY]);
-                    console.log("currentPos: ", currentPos);
-                }}
+                // onClick={(e) => {
+                // console.log("location: ", [e.clientX, e.clientY]);
+                // setCurrentPos([e.clientX, e.clientY]);
+                // console.log("currentPos: ", currentPos);
+                // console.log("location: ", e.latlng);
+                // }}
             >
                 <MapContainer
                     center={[52.52, 13.4]}
                     zoom={13}
-                    scrollWheelZoom={false}
+                    // scrollWheelZoom={false}
                 >
                     <TileLayer
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
-                    <Marker position={[52.52, 13.4]}>
+                    <MyComponent setLocation={setLocation} />
+                    {/* <Marker position={[52.52, 13.4]}>
                         <Popup>
                             A pretty CSS3 popup. <br /> Easily customizable.
                         </Popup>
-                    </Marker>
+                    </Marker> */}
+                    {markers &&
+                        markers.map((marker) => (
+                            <Marker
+                                key={marker.id}
+                                position={marker.coords}
+                                // onClick={() => {
+                                //     setActiveMarker(marker);
+                                // }}
+                            >
+                                <Popup>{marker.title}</Popup>
+                            </Marker>
+                        ))}
                 </MapContainer>
             </div>
         </div>
     );
+}
+
+function MyComponent({ setLocation }) {
+    const map = useMapEvent("click", (e) => {
+        // console.log(e);
+        setLocation(e.latlng);
+    });
+    return null;
 }

@@ -285,6 +285,38 @@ app.get("/user", (req, res) => {
         });
 });
 
+// getting popup comments from db
+
+app.get("/getcomments", (req, res) => {
+    // console.log("req.session in /getComments: ", req.session);
+    const { userId } = req.session;
+
+    db.getComments(userId)
+        .then(({ rows }) => {
+            console.log("rows in getComments: ", rows);
+            res.json(rows);
+        })
+        .catch((err) => console.log("ERROR in getComments: ", err));
+});
+
+// adding input from popup into db
+
+app.post("/popup", (req, res) => {
+    console.log("req.body in /popup: ", req.body);
+    const { userId } = req.session;
+    const { comment } = req.body;
+    const lat = req.body.coords[0];
+    const lng = req.body.coords[1];
+
+    db.addComment(comment, userId, lat, lng)
+        .then(({ rows }) => {
+            console.log("rows in addComment: ", rows);
+        })
+        .catch((err) => {
+            console.log("ERROR in addComment: ", err);
+        });
+});
+
 // get-> logout
 
 app.get("/logout", (req, res) => {

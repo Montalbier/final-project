@@ -23,5 +23,7 @@ CREATE TABLE popup(
   comment TEXT,
   url VARCHAR(255),
   user_id INT REFERENCES users(id) NOT NULL,
+  lat real NULL,
+  lng real NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
  );

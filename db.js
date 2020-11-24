@@ -72,3 +72,15 @@ exports.uploadImage = (url, id) => {
 module.exports.getUserById = (id) => {
     return db.query(`SELECT * FROM users WHERE id = $1`, [id]);
 };
+
+module.exports.getComments = (id) => {
+    return db.query(`SELECT * FROM popup WHERE user_id = $1`, [id]);
+};
+
+module.exports.addComment = (comment, user_id, lat, lng) => {
+    return db.query(
+        `INSERT INTO popup (comment, user_id, lat, lng)
+        VALUES($1,$2, $3, $4)`,
+        [comment, user_id, lat, lng]
+    );
+};
