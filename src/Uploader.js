@@ -69,11 +69,15 @@ export default class Uploader extends React.Component {
     render() {
         return (
             <div
+                id="coso-enorme"
                 style={{
                     display: "flex",
                     width: "100%",
+                    height: "100%",
                     justifyContent: "center",
                 }}
+                // onClick={(e) => console.log(e)}
+                onClick={() => this.props.toggleComponent()}
             >
                 <div id="profile-container">
                     <div
@@ -112,6 +116,12 @@ export default class Uploader extends React.Component {
                                     onClick={() => this.submit()}
                                 >
                                     Upload
+                                </button>
+                                <button
+                                    style={{ width: "100%" }}
+                                    // onClick={() => this.props.toggleComponent()}
+                                >
+                                    Cancel
                                 </button>
                             </div>
                         </div>

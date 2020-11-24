@@ -16,6 +16,7 @@ export default class App extends React.Component {
             flashcards: sampleFlashcards,
         };
         this.methodInApp = this.methodInApp.bind(this);
+        this.toggleComponent = this.toggleComponent.bind(this);
     }
 
     methodInApp(arg) {
@@ -63,7 +64,7 @@ export default class App extends React.Component {
                             display: "flex",
                             flexWrap: "wrap",
                             marginTop: "40px",
-                            marginLeft: "-130px",
+                            // marginLeft: "-130px",
                         }}
                     >
                         <h4>
@@ -107,21 +108,8 @@ export default class App extends React.Component {
                             </h4>
                         </div>
                     </div>
-                    <div
-                        style={{
-                            zoom: "20%",
-                            marginTop: "80px",
-                            marginRight: "80px",
-                            overflow: "hidden",
-                            zIndex: "20",
-                        }}
-                    >
-                        <ProfilePic
-                            first={this.state.first}
-                            last={this.state.last}
-                            imgUrl={this.state.imgUrl}
-                            toggleComponent={() => this.toggleComponent()}
-                        />
+                    <div style={{ marginTop: "10px", marginRight: "20px" }}>
+                        <img id="logo" src="/assets/tipologo.png" />
                     </div>
                 </header>
                 <div></div>
@@ -137,6 +125,7 @@ export default class App extends React.Component {
                                 first={this.state.first}
                                 last={this.state.last}
                                 id={this.state.id}
+                                toggleComponent={() => this.toggleComponent()}
                             />
                         )}
                     />
@@ -147,7 +136,7 @@ export default class App extends React.Component {
                         <Uploader
                             methodInApp={this.methodInApp}
                             imgUrl={this.state.imgUrl}
-                            // toggleComponent={() => this.toggleComponent()}
+                            toggleComponent={() => this.toggleComponent()}
                         />
                     )}
                 </div>
