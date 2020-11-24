@@ -4,7 +4,7 @@ import Deck from "./Deck";
 import Travelmap from "./Travelmap";
 import Logo from "./Logo";
 import Profile from "./Profile";
-import ProfilePic from "./ProfilePic";
+// import ProfilePic from "./ProfilePic";
 import Uploader from "./Uploader";
 import axios from "./axios";
 
@@ -16,6 +16,7 @@ export default class App extends React.Component {
             flashcards: sampleFlashcards,
         };
         this.methodInApp = this.methodInApp.bind(this);
+        this.toggleComponent = this.toggleComponent.bind(this);
     }
 
     methodInApp(arg) {
@@ -55,113 +56,118 @@ export default class App extends React.Component {
     render() {
         return (
             <BrowserRouter>
-                <header>
-                    <Logo />
-                    <div
-                        className="navbar"
-                        style={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            marginTop: "40px",
-                        }}
-                    >
-                        <h4>
-                            <a
-                                className="navbar-text"
-                                style={{
-                                    padding: "20px",
-                                    fontSize: "16px",
-                                }}
-                                href="/deck"
-                            >
-                                Flashcards
-                            </a>
-                        </h4>
-                        <div>
+                <div
+                    className="container"
+                    style={{
+                        height: "100%",
+                        minHeight: "100vh",
+                        position: "relative",
+                        backgroundImage: `url("/assets/profilelandscape.png")`,
+                    }}
+                >
+                    <header style={{ zIndex: "9" }}>
+                        <Logo />
+                        <div
+                            className="navbar"
+                            style={{
+                                display: "flex",
+                                flexWrap: "wrap",
+                                marginTop: "40px",
+                                // marginLeft: "-130px",
+                            }}
+                        >
                             <h4>
                                 <a
                                     className="navbar-text"
-                                    style={{
-                                        padding: "20px",
-                                        fontSize: "16px",
-                                    }}
-                                    href="/map"
+                                    style={{ padding: "30px" }}
+                                    href="/"
                                 >
-                                    Map
+                                    Profile
                                 </a>
                             </h4>
-                        </div>
-                        <div>
                             <h4>
                                 <a
                                     className="navbar-text"
-                                    style={{
-                                        padding: "20px",
-                                        fontSize: "16px",
-                                    }}
-                                    href="/logout"
+                                    style={{ padding: "30px" }}
+                                    href="/deck"
                                 >
-                                    Log out
+                                    Flashcards
                                 </a>
                             </h4>
+                            <div>
+                                <h4>
+                                    <a
+                                        className="navbar-text"
+                                        style={{ padding: "30px" }}
+                                        href="/map"
+                                    >
+                                        Map
+                                    </a>
+                                </h4>
+                            </div>
+                            <div>
+                                <h4>
+                                    <a
+                                        className="navbar-text"
+                                        style={{ padding: "30px" }}
+                                        href="/logout"
+                                    >
+                                        Log out
+                                    </a>
+                                </h4>
+                            </div>
                         </div>
-                    </div>
-                    <div
-                        style={{
-                            zoom: "20%",
-                            marginTop: "80px",
-                            marginRight: "80px",
-                            overflow: "hidden",
-                            zIndex: "20",
-                        }}
-                    >
-                        <ProfilePic
-                            first={this.state.first}
-                            last={this.state.last}
-                            imgUrl={this.state.imgUrl}
-                            toggleComponent={() => this.toggleComponent()}
-                        />
-                    </div>
-                </header>
-                <div></div>
-                {/* <footer>
-                    thank you blablablab
-                </footer> */}
-
-                <div>
-                    <Route
-                        exact
-                        path="/"
-                        render={() => (
-                            <Profile
-                                imgUrl={this.state.imgUrl}
-                                first={this.state.first}
-                                last={this.state.last}
-                                id={this.state.id}
+                        <div style={{ marginTop: "10px", marginRight: "20px" }}>
+                            <img id="logo" src="/assets/tipologo.png" />
+                        </div>
+                    </header>
+                    <div className="body">
+                        <div>
+                            <Route
+                                exact
+                                path="/"
+                                render={() => (
+                                    <Profile
+                                        imgUrl={this.state.imgUrl}
+                                        first={this.state.first}
+                                        last={this.state.last}
+                                        id={this.state.id}
+                                        toggleComponent={() =>
+                                            this.toggleComponent()
+                                        }
+                                    />
+                                )}
                             />
-                        )}
-                    />
-                </div>
+                        </div>
 
-                <div>
-                    {this.state.uploaderIsVisible && (
-                        <Uploader
-                            methodInApp={this.methodInApp}
-                            imgUrl={this.state.imgUrl}
-                            // toggleComponent={() => this.toggleComponent()}
-                        />
-                    )}
+                        <div>
+                            {this.state.uploaderIsVisible && (
+                                <Uploader
+                                    methodInApp={this.methodInApp}
+                                    imgUrl={this.state.imgUrl}
+                                    toggleComponent={() =>
+                                        this.toggleComponent()
+                                    }
+                                />
+                            )}
+                        </div>
+                        <div>
+                            <Route
+                                path="/deck"
+                                render={() => (
+                                    <Deck flashcards={this.state.flashcards} />
+                                )}
+                            />
+                        </div>
+                        <div>
+                            <Route path="/map" render={() => <Travelmap />} />
+                        </div>
+                    </div>
                 </div>
                 <div>
-                    <Route
-                        path="/deck"
-                        render={() => (
-                            <Deck flashcards={this.state.flashcards} />
-                        )}
-                    />
-                </div>
-                <div>
-                    <Route path="/map" render={() => <Travelmap />} />
+                    <footer>
+                        This is a footer and it should be down the bottom
+                    </footer>
                 </div>
             </BrowserRouter>
         );
