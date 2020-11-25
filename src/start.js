@@ -17,10 +17,3 @@ if (!userIsLoggedIn) {
 }
 
 ReactDOM.render(elem, document.querySelector("main"));
-
-// ReactDOM.render(
-//     <React.StrictMode>
-//         <App />
-//     </React.StrictMode>,
-//     document.querySelector("main")
-// );

@@ -20,7 +20,7 @@ export default class ResetPassword extends React.Component {
     getCurrentDisplay() {
         const step = this.state.display;
         if (step == 1) {
-            console.log("first display modus");
+            // console.log("first display modus");
 
             return (
                 <div
@@ -33,6 +33,12 @@ export default class ResetPassword extends React.Component {
                     <div>
                         <p>Please enter your email address</p>
                         <input
+                            style={{
+                                width: "218px",
+                                marginLeft: "0px",
+                                marginBottom: "10px",
+                                justifyContent: "center",
+                            }}
                             key="mail"
                             name="email"
                             placeholder="Email"
@@ -44,7 +50,7 @@ export default class ResetPassword extends React.Component {
                 </div>
             );
         } else if (step == 2) {
-            console.log("second display modus");
+            // console.log("second display modus");
             return (
                 <div
                     style={{
@@ -56,6 +62,11 @@ export default class ResetPassword extends React.Component {
                     <div>
                         <p>Enter your secret code here:</p>
                         <input
+                            style={{
+                                width: "198px",
+                                marginLeft: "0px",
+                                marginBottom: "10px",
+                            }}
                             key="code"
                             name="code"
                             placeholder="Code"
@@ -64,13 +75,27 @@ export default class ResetPassword extends React.Component {
                         ></input>
                         <p>Please enter a new password:</p>
                         <input
+                            style={{
+                                width: "198px",
+                                marginLeft: "0px",
+                                marginBottom: "10px",
+                            }}
                             name="password"
                             placeholder="Password"
                             type="password"
                             onChange={this.handleChange}
                             autoComplete="off"
                         ></input>
-                        <button onClick={() => this.update()}>update</button>
+                        <button
+                            style={{
+                                width: "100%",
+                                marginLeft: "0px",
+                                marginBottom: "10px",
+                            }}
+                            onClick={() => this.update()}
+                        >
+                            Update
+                        </button>
                     </div>
                 </div>
             );
