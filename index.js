@@ -307,10 +307,12 @@ app.post("/popup", (req, res) => {
     const { comment } = req.body;
     const lat = req.body.coords[0];
     const lng = req.body.coords[1];
+    console.log("userId, comment, lat, lng: ", userId, comment, lat, lng);
 
     db.addComment(comment, userId, lat, lng)
         .then(({ rows }) => {
             console.log("rows in addComment: ", rows);
+            res.json({ success: true });
         })
         .catch((err) => {
             console.log("ERROR in addComment: ", err);
