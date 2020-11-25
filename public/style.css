@@ -37,6 +37,64 @@ footer {
     bottom: 0px;
 }
 
+input {
+    font-family: "Nunito", sans-serif;
+    margin-top: 5px;
+    border: 0px;
+    padding: 5px;
+    border-radius: 50px;
+    padding-left: 5px;
+}
+
+p {
+    font-family: "Nunito", sans-serif;
+}
+
+button {
+    font-family: "Nunito", sans-serif;
+    background-color: #555b6e;
+    color: #ffecde;
+    border: 0px;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 5px;
+    width: 98%;
+    margin-left: -2px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transform: rotateY(var(--rotate-y, 0)) translateY(var(--translate-y, 0));
+}
+select {
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    background-color: #81b7b2;
+    color: #fff;
+    border: 0px;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 5px;
+    width: 50%;
+    margin-left: -2px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    font-family: "Nunito", sans-serif;
+    background-color: #c6848f;
+    color: #fff;
+    border: 0px;
+    border-radius: 20px;
+    justify-content: center;
+    padding: 5px;
+    width: 98%;
+    margin-left: -2px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    --translate-y: 2px;
+    --translate-x: 2px;
+}
+
 /* TEXT */
 h1 {
     font-family: "Nunito", sans-serif;
@@ -82,7 +140,7 @@ h1 {
 }
 
 .good-learn-text {
-    margin: 20px 20px 40px 20px;
+    margin: 10px 20px 30px 20px;
 }
 
 .card {

@@ -40,9 +40,11 @@ export default class Registration extends React.Component {
     render() {
         console.log("this.state.error: ", this.state.error);
         return (
-            <>
+            <div>
                 <div style={{ display: "flex", justifyContent: "center" }}>
-                    {this.state.error && <div>Oops, something went wrong!</div>}
+                    {this.state.error && (
+                        <div>Oops, something went wrong 🤕</div>
+                    )}
                     <div
                         style={{
                             width: "163px",
@@ -98,13 +100,15 @@ export default class Registration extends React.Component {
                                 justifyContent: "center",
                             }}
                         >
-                            <p>
+                            <p style={{ color: "#555b6e" }}>
                                 Already registered? <br />
                                 <Link
                                     className="fake-button"
                                     style={{
-                                        color: "darkgoldenrod",
+                                        color: "#c6848f",
                                         textDecoration: "none",
+                                        fontWeight: "bold",
+                                        marginTop: "5px",
                                     }}
                                     to="/login"
                                 >
@@ -114,7 +118,7 @@ export default class Registration extends React.Component {
                         </div>
                     </div>
                 </div>
-            </>
+            </div>
         );
     }
 }

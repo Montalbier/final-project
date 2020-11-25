@@ -40,6 +40,15 @@ export default function Deck({ flashcards }) {
                         even stronger connection that will help you remember
                         later.{" "}
                     </p>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        <select name="select">
+                            <option value="value1">German</option>
+                            <option value="value2" selected>
+                                French
+                            </option>
+                            <option value="value3">Spanish</option>
+                        </select>
+                    </div>
                 </div>
                 <div className="card-deck">
                     <Flashcard

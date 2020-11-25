@@ -51,14 +51,22 @@ export default class Login extends React.Component {
                     )}
 
                     <input
-                        style={{ width: "198px", marginLeft: "0px" }}
+                        style={{
+                            width: "198px",
+                            marginLeft: "0px",
+                            marginBottom: "10px",
+                        }}
                         name="email"
                         placeholder="Email"
                         onChange={(e) => this.handleChange(e)}
                         // onChange={this.handleChange}
                     ></input>
                     <input
-                        style={{ width: "198px", marginRight: "0px" }}
+                        style={{
+                            width: "198px",
+                            marginRight: "0px",
+                            marginBottom: "10px",
+                        }}
                         name="password"
                         type="password"
                         placeholder="Password"

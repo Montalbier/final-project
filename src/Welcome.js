@@ -24,7 +24,14 @@ export default function Welcome() {
                 >
                     <img src="/assets/isologo.png" style={{ width: "450px" }} />
                 </div>
-                <div style={{ marginTop: "-20px" }}>
+                <div
+                    style={{
+                        marginTop: "-20px",
+                        justifyContent: "center",
+                        textAlign: "center",
+                        color: "#c6848f",
+                    }}
+                >
                     <h1>Welcome to Good Travel</h1>
                 </div>
                 <HashRouter>
