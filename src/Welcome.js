@@ -14,6 +14,15 @@ export default function Welcome() {
             }}
         >
             <div>
+                <img
+                    src="/assets/4profilelandscape.png"
+                    style={{
+                        width: "486px",
+                        flexWrap: "wrap",
+                    }}
+                />
+            </div>
+            <div>
                 <div
                     style={{
                         width: "800px",

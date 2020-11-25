@@ -3,6 +3,14 @@
     margin: 0px;
 }
 
+a {
+    color: #c6848f;
+}
+
+a:hover {
+    color: #81b7b2;
+}
+
 body {
     background-color: #ffecde;
     height: 100%;
