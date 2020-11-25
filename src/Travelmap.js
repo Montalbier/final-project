@@ -21,6 +21,7 @@ export default function Travelmap() {
     const [initialMarkers, setInitialMarkers] = useState([]);
     const [allMarkers, setAllMarkers] = useState([]);
     const [comment, setComment] = useState("");
+    const [currentMarker, setCurrentMarker] = useState([]);
 
     // function onMapClick(e) {
     // console.log("location: ", e);
@@ -44,26 +45,24 @@ export default function Travelmap() {
             // popupInput = e.target.value;
             setComment(e.target.value);
             e.target.value = "";
-
             // console.log("markers in keyCheck: ", markers);
         }
     };
 
     function setLocation(location) {
         console.log("location setLocation ", location.lat);
-        setAllMarkers([
-            ...allMarkers,
-            {
-                comment: (
-                    <textarea
-                        onKeyDown={keyCheck}
-                        placeholder="Share your thoughts, feelings, questions about this place..."
-                    />
-                ),
-                coords: [location.lat, location.lng],
-                id: location.lat + location.lng,
-            },
-        ]);
+        const currentMarker = {
+            comment: (
+                <textarea
+                    onKeyDown={keyCheck}
+                    placeholder="Share your thoughts, feelings, questions about this place..."
+                />
+            ),
+            coords: [location.lat, location.lng],
+            id: location.lat + location.lng,
+        };
+        setCurrentMarker(currentMarker);
+        setAllMarkers([...allMarkers, currentMarker]);
     }
 
     useEffect(() => {
@@ -112,18 +111,31 @@ export default function Travelmap() {
             return;
         }
 
+        const updatedMarker = { ...currentMarker, comment: comment };
+        setCurrentMarker(updatedMarker);
+        const updatedMarkers = allMarkers.map((marker) => {
+            if (marker.id == currentMarker.id) {
+                return { ...marker, comment: comment };
+            } else {
+                return marker;
+            }
+        });
+
+        setAllMarkers(updatedMarkers);
+
         axios
             .post("/popup", {
                 comment: comment,
-                coords: allMarkers[0].coords,
+                coords: currentMarker.coords,
             })
             .then(({ data }) => {
                 console.log("axios response in /popup: ", data);
+                setComment("");
             })
             .catch((err) => console.log("axios ERROR in /popup: ", err));
-    });
+    }, [comment]);
 
-    console.log("allMarkers: ", allMarkers);
+    console.log("currentMarker: ", currentMarker);
 
     return (
         <div>
@@ -144,6 +156,7 @@ export default function Travelmap() {
                                 key={marker.id}
                                 position={marker.coords}
                                 // onClick={() => {
+                                //     console.log("clicking");
                                 //     setActiveMarker(marker);
                                 // }}
                             >

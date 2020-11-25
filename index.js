@@ -293,7 +293,7 @@ app.get("/getcomments", (req, res) => {
 
     db.getComments(userId)
         .then(({ rows }) => {
-            // console.log("rows in getComments: ", rows);
+            console.log("rows in getComments: ", rows);
             res.json(rows);
         })
         .catch((err) => console.log("ERROR in getComments: ", err));
@@ -302,15 +302,17 @@ app.get("/getcomments", (req, res) => {
 // adding input from popup into db
 
 app.post("/popup", (req, res) => {
-    // console.log("req.body in /popup: ", req.body);
+    console.log("req.body in /popup: ", req.body);
     const { userId } = req.session;
     const { comment } = req.body;
     const lat = req.body.coords[0];
     const lng = req.body.coords[1];
+    console.log("userId, comment, lat, lng: ", userId, comment, lat, lng);
 
     db.addComment(comment, userId, lat, lng)
         .then(({ rows }) => {
             console.log("rows in addComment: ", rows);
+            res.json({ success: true });
         })
         .catch((err) => {
             console.log("ERROR in addComment: ", err);
