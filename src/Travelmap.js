@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import L, { icon, layerGroup } from "leaflet";
+import L from "leaflet";
 // import { Map, MapContainer, TileLayer, LocationMarker } from "react-leaflet";
 import {
     MapContainer,
@@ -12,36 +12,28 @@ import axios from "./axios";
 // import {Map as MapContainer, Marker, Popup, TileLayer } from “react-leaflet”;
 
 export default function Travelmap() {
-    var popup;
-    var mymap;
+    // var popup;
+    // var mymap;
     // var popupInput;
     const mapRef = useRef();
     // const [currentPos, setCurrentPos] = useState(null);
     // const [activeMarker, setActiveMarker] = React.useState(null);
-    const [markers, setMarkers] = useState([
-        // {
-        //     coords: [52.52, 13.4],
-        //     title: "My great marker... 1",
-        // },
-        // {
-        //     coords: [52.5163, 13.3777],
-        //     title: "My great marker... 2",
-        // },
-    ]);
+    const [initialMarkers, setInitialMarkers] = useState([]);
+    const [allMarkers, setAllMarkers] = useState([]);
     const [comment, setComment] = useState("");
 
-    function onMapClick(e) {
-        // console.log("location: ", e);
-        // setcurrentPos()
-        // popup
-        //     .setLatLng([52.52, 13.4])
-        //     .setContent("You clicked the map at " + e.latlng.toString())
-        //     .openOn(mymap);
-        // L.marker(e.latlng, { title: "pimento" }).addTo(mymap);
-        // <Popup>
-        // </Popup>;
-        // <Marker position={[52.52, 13.4]}></Marker>;
-    }
+    // function onMapClick(e) {
+    // console.log("location: ", e);
+    // setcurrentPos()
+    // popup
+    //     .setLatLng([52.52, 13.4])
+    //     .setContent("You clicked the map at " + e.latlng.toString())
+    //     .openOn(mymap);
+    // L.marker(e.latlng, { title: "pimento" }).addTo(mymap);
+    // <Popup>
+    // </Popup>;
+    // <Marker position={[52.52, 13.4]}></Marker>;
+    // }
 
     const keyCheck = (e) => {
         // console.log("keydown is working");
@@ -58,11 +50,11 @@ export default function Travelmap() {
     };
 
     function setLocation(location) {
-        console.log("location setLocation ", location);
-        setMarkers([
-            ...markers,
+        console.log("location setLocation ", location.lat);
+        setAllMarkers([
+            ...allMarkers,
             {
-                title: (
+                comment: (
                     <textarea
                         onKeyDown={keyCheck}
                         placeholder="Share your thoughts, feelings, questions about this place..."
@@ -81,15 +73,15 @@ export default function Travelmap() {
         axios
             .get("/getcomments")
             .then(({ data }) => {
+                const markers = data.map((marker) => {
+                    return {
+                        ...marker,
+                        coords: [marker.lat, marker.lng],
+                    };
+                });
                 console.log("axios response in /getcomments: ", data);
-                if (data.comment) {
-                    setMarkers({
-                        id: data.id,
-                        comment: data.comment,
-                        time: data.created_at,
-                    });
-                }
-                console.log("markers: ", markers);
+                setAllMarkers(markers);
+                // console.log("markers in /getcomments: ", markers);
             })
             .catch((err) => console.log("ERROR in /getcomments: ", err));
 
@@ -115,9 +107,7 @@ export default function Travelmap() {
     }, []);
 
     useEffect(() => {
-        console.log("comment: ", comment);
-        console.log("markers: ", markers);
-
+        // console.log("comment: ", comment);
         if (!comment) {
             return;
         }
@@ -125,47 +115,19 @@ export default function Travelmap() {
         axios
             .post("/popup", {
                 comment: comment,
-                coords: markers[0].coords,
+                coords: allMarkers[0].coords,
             })
             .then(({ data }) => {
                 console.log("axios response in /popup: ", data);
-
-                // if (!abort) {
-                // setMatch(data);
-                // console.log({ match });
-                // }
-                // return () => {
-                //     abort = true;
-                // };
             })
             .catch((err) => console.log("axios ERROR in /popup: ", err));
     });
 
-    // useEffect(() => {
-    //     console.log("map component mounted");
-    // if (markerRef.current) {
-    //     markerRef.current.setLatLng(markerPosition);
-    // } else {
-    //     markerRef.current = L.marker(markerPosition).addTo(mapRef.current);
-    // }
-    // }, []);
-
-    // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-    // circle.bindPopup("I am a circle.");
-    // polygon.bindPopup("I am a polygon.");
-    console.log("markers at bottom: ", markers);
+    console.log("allMarkers: ", allMarkers);
 
     return (
         <div>
-            <div
-                id="mapid"
-                // onClick={(e) => {
-                // console.log("location: ", [e.clientX, e.clientY]);
-                // setCurrentPos([e.clientX, e.clientY]);
-                // console.log("currentPos: ", currentPos);
-                // console.log("location: ", e.latlng);
-                // }}
-            >
+            <div id="mapid">
                 <MapContainer
                     center={[52.52, 13.4]}
                     zoom={13}
@@ -176,13 +138,8 @@ export default function Travelmap() {
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
                     <MyComponent setLocation={setLocation} />
-                    {/* <Marker position={[52.52, 13.4]}>
-                        <Popup>
-                            A pretty CSS3 popup. <br /> Easily customizable.
-                        </Popup>
-                    </Marker> */}
-                    {markers &&
-                        markers.map((marker) => (
+                    {allMarkers &&
+                        allMarkers.map((marker) => (
                             <Marker
                                 key={marker.id}
                                 position={marker.coords}
@@ -190,7 +147,7 @@ export default function Travelmap() {
                                 //     setActiveMarker(marker);
                                 // }}
                             >
-                                <Popup>{marker.title}</Popup>
+                                <Popup>{marker.comment}</Popup>
                             </Marker>
                         ))}
                 </MapContainer>

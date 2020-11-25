@@ -293,7 +293,7 @@ app.get("/getcomments", (req, res) => {
 
     db.getComments(userId)
         .then(({ rows }) => {
-            console.log("rows in getComments: ", rows);
+            // console.log("rows in getComments: ", rows);
             res.json(rows);
         })
         .catch((err) => console.log("ERROR in getComments: ", err));
