@@ -9,6 +9,7 @@ import Welcome from "./Welcome";
 
 let elem;
 const userIsLoggedIn = location.pathname != "/welcome";
+
 if (!userIsLoggedIn) {
     elem = <Welcome />;
 } else {

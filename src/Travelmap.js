@@ -9,6 +9,7 @@ import {
     useMapEvent,
 } from "react-leaflet";
 import axios from "./axios";
+// import Search from "react-leaflet-search/lib/Search-v1";
 // import {Map as MapContainer, Marker, Popup, TileLayer } from “react-leaflet”;
 
 export default function Travelmap() {
@@ -54,6 +55,7 @@ export default function Travelmap() {
         const currentMarker = {
             comment: (
                 <textarea
+                    className="popupinput"
                     onKeyDown={keyCheck}
                     placeholder="Share your thoughts, feelings, questions about this place..."
                 />
@@ -149,6 +151,13 @@ export default function Travelmap() {
                         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     />
+                    const searchComponent = (props) =>{" "}
+                    {/* <Search
+                        position="topleft"
+                        provider="BingMap"
+                        providerOptions={{ providerKey: "{BINGMAP_KEY}" }}
+                    /> */}
+                    ;
                     <MyComponent setLocation={setLocation} />
                     {allMarkers &&
                         allMarkers.map((marker) => (
@@ -160,7 +169,9 @@ export default function Travelmap() {
                                 //     setActiveMarker(marker);
                                 // }}
                             >
-                                <Popup>{marker.comment}</Popup>
+                                <Popup>
+                                    {marker.comment} <button>Delete</button>
+                                </Popup>
                             </Marker>
                         ))}
                 </MapContainer>

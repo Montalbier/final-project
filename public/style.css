@@ -200,3 +200,8 @@ h1 {
     width: 100vw;
     height: 85vh;
 }
+
+.popupinput {
+    width: 240px;
+    height: 80px;
+}
