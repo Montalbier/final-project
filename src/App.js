@@ -7,6 +7,9 @@ import Profile from "./Profile";
 // import ProfilePic from "./ProfilePic";
 import Uploader from "./Uploader";
 import axios from "./axios";
+import TodoInput from "./TodoInput";
+import TodoList from "./TodoList";
+import uuid from "uuid";
 
 export default class App extends React.Component {
     constructor() {
@@ -14,15 +17,49 @@ export default class App extends React.Component {
         this.state = {
             uploaderIsVisible: false,
             flashcards: sampleFlashcards,
+            items: [],
+            id: uuid(),
+            item: "",
+            editItem: false,
         };
         this.methodInApp = this.methodInApp.bind(this);
         this.toggleComponent = this.toggleComponent.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.clearList = this.clearList.bind(this);
     }
 
     methodInApp(arg) {
         this.toggleComponent();
         // this.setState();
         this.setState({ imgUrl: arg });
+    }
+
+    handleChange(e) {
+        this.setState({
+            item: e.target.value,
+        });
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const newItem = {
+            id: this.state.id,
+            title: this.state.item,
+        };
+
+        const updatedItems = [...this.state.items, newItem];
+
+        this.setState({
+            items: updatedItems,
+            item: "",
+            id: uuid(),
+        });
+    }
+    clearList() {
+        this.setState({
+            items: [],
+        });
     }
 
     componentDidMount() {
@@ -160,6 +197,24 @@ export default class App extends React.Component {
                         </div>
                         <div>
                             <Route path="/map" render={() => <Travelmap />} />
+                        </div>
+                        <div>
+                            <Route
+                                path="/todo"
+                                render={() => (
+                                    <div>
+                                        <TodoInput
+                                            item={this.state.item}
+                                            handleChange={this.handleChange}
+                                            handleSubmit={this.handleSubmit}
+                                        />
+                                        <TodoList
+                                            items={this.state.items}
+                                            clearList={this.clearList}
+                                        />
+                                    </div>
+                                )}
+                            />
                         </div>
                     </div>
                 </div>

@@ -211,16 +211,15 @@ h1 {
     height: 85vh;
 }
 
-<<<<<<< HEAD
 .popupinput {
     width: 240px;
     height: 80px;
-=======
+}
+
 div.leaflet-popup-content {
     font-family: "Nunito", sans-serif;
 }
 
 textarea {
     font-family: "Nunito", sans-serif;
->>>>>>> 6e05371692d2d98c027c973029e0bb3ccc1489ee
 }
