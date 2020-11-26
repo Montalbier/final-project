@@ -165,7 +165,8 @@ export default class App extends React.Component {
                 </div>
                 <div>
                     <footer>
-                        This is a footer and it should be down the bottom
+                        &copy; 2020 This wouldn't have been possible without
+                        everyone else ✨{" "}
                     </footer>
                 </div>
             </BrowserRouter>

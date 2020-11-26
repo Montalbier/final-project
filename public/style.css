@@ -200,8 +200,10 @@ h1 {
 } */
 
 .popup {
-    height: 240px;
-    width: 160px;
+    font-family: "Nunito", sans-serif;
+
+    height: 440px;
+    width: 260px;
 }
 
 .leaflet-container {
@@ -209,7 +211,16 @@ h1 {
     height: 85vh;
 }
 
+<<<<<<< HEAD
 .popupinput {
     width: 240px;
     height: 80px;
+=======
+div.leaflet-popup-content {
+    font-family: "Nunito", sans-serif;
+}
+
+textarea {
+    font-family: "Nunito", sans-serif;
+>>>>>>> 6e05371692d2d98c027c973029e0bb3ccc1489ee
 }

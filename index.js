@@ -123,8 +123,11 @@ app.post("/register", (req, res) => {
 
 app.post("/login", (req, res) => {
     const { email, password } = req.body;
+    console.log({ email });
+
     db.getUser(email)
         .then(({ rows }) => {
+            console.log({ rows });
             const { id } = rows[0];
             const hash = rows[0].password;
             compare(password, hash)
