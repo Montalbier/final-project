@@ -200,11 +200,21 @@ h1 {
 } */
 
 .popup {
-    height: 240px;
-    width: 160px;
+    font-family: "Nunito", sans-serif;
+
+    height: 440px;
+    width: 260px;
 }
 
 .leaflet-container {
     width: 100vw;
     height: 85vh;
+}
+
+div.leaflet-popup-content {
+    font-family: "Nunito", sans-serif;
+}
+
+textarea {
+    font-family: "Nunito", sans-serif;
 }
