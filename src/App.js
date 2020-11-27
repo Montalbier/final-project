@@ -56,7 +56,31 @@ export default class App extends React.Component {
             item: "",
             id: uuid(),
         });
+
+        console.log("this.state: ", this.state);
+
+        // axios
+        //     .post("/packlist", this.state)
+        //     .then((response) => {
+        //         console.log("axios response from register: ", response);
+        //         if (response.data.success) {
+        //             console.log("success!");
+        //             // we want to redirect the user to our social network
+        //             location.replace("/");
+        //         } else {
+        //             this.setState({
+        //                 error: true,
+        //             });
+        //         }
+        //     })
+        //     .catch((err) => {
+        //         console.log("axios ERROR in post register: ", err);
+        //         this.setState({
+        //             error: true,
+        //         });
+        //     });
     }
+
     clearList() {
         this.setState({
             items: [],

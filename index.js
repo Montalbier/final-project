@@ -12,6 +12,7 @@ const ses = require("./ses");
 const s3 = require("./s3");
 const s3Url = "https://s3.amazonaws.com/spicedling/";
 const cryptoRandomString = require("crypto-random-string");
+const { IoTSecureTunneling } = require("aws-sdk");
 
 // 1. MIDDLEWARE
 
@@ -314,12 +315,41 @@ app.post("/popup", (req, res) => {
 
     db.addComment(comment, userId, lat, lng)
         .then(({ rows }) => {
-            console.log("rows in addComment: ", rows);
+            // console.log("rows in addComment: ", rows);
             res.json({ success: true });
         })
         .catch((err) => {
             console.log("ERROR in addComment: ", err);
         });
+});
+
+// getting packlist items from db
+
+app.get("/getitems", (req, res) => {
+    // console.log("req.session in /getComments: ", req.session);
+    const { userId } = req.session;
+
+    db.getComments(userId)
+        .then(({ rows }) => {
+            console.log("rows in getComments: ", rows);
+            res.json(rows);
+        })
+        .catch((err) => console.log("ERROR in getComments: ", err));
+});
+
+// adding items from packlist into db
+
+app.post("/packlist", (req, res) => {
+    console.log("post request to /packlist happened");
+    const { item } = req.body;
+    const { userId } = req.session;
+
+    db.addItem(item, userId)
+        .then(({ rows }) => {
+            console.log("rows in addItem: ", rows);
+            res.json({ success: true });
+        })
+        .catch((err) => console.log("ERROR in addItem: ", err));
 });
 
 // get-> logout
