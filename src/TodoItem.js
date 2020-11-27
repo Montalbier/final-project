@@ -12,8 +12,10 @@ export default class TodoItem extends Component {
                 }}
             >
                 <li style={{ textAlign: "link" }}>
-                    <div>
-                        <p style={{ fontSize: "16px" }}>{title}</p>
+                    <div style={{ width: "280px" }}>
+                        <p style={{ fontSize: "16px", flexWrap: "wrap" }}>
+                            {title}
+                        </p>
                         <i
                             style={{ cursor: "pointer" }}
                             onClick={handleDelete}
