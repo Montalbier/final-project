@@ -5,9 +5,14 @@ export default class TodoList extends Component {
     render() {
         const { items, clearList, handleDelete } = this.props;
         return (
-            <div>
-                <ul>
-                    <h3>en Todolist</h3>
+            <div
+                style={{
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "center",
+                }}
+            >
+                <ul style={{ width: "100px" }}>
                     {items.map((item) => {
                         return (
                             <TodoItem
@@ -17,7 +22,11 @@ export default class TodoList extends Component {
                             />
                         );
                     })}
-                    <button type="button" onClick={clearList}>
+                    <button
+                        style={{ width: "80px", marginTop: "30px" }}
+                        type="button"
+                        onClick={clearList}
+                    >
                         Clear list
                     </button>
                 </ul>

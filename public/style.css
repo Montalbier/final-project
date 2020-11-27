@@ -223,3 +223,14 @@ div.leaflet-popup-content {
 textarea {
     font-family: "Nunito", sans-serif;
 }
+
+ul {
+    font-family: "Nunito", sans-serif;
+    font-size: 18px;
+    color: #81b7b2;
+    text-align: left;
+}
+
+li {
+    list-style-type: none;
+}
