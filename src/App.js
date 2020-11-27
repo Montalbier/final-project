@@ -27,6 +27,7 @@ export default class App extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.clearList = this.clearList.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     methodInApp(arg) {
@@ -59,6 +60,13 @@ export default class App extends React.Component {
     clearList() {
         this.setState({
             items: [],
+        });
+    }
+
+    handleDelete(id) {
+        const filteredItems = this.state.items.filter((item) => item.id !== id);
+        this.setState({
+            items: filteredItems,
         });
     }
 
@@ -211,6 +219,7 @@ export default class App extends React.Component {
                                         <TodoList
                                             items={this.state.items}
                                             clearList={this.clearList}
+                                            handleDelete={this.handleDelete}
                                         />
                                     </div>
                                 )}
