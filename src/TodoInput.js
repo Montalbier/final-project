@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import axios from "./axios";
 
 export default class TodoInput extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {};
         this.packlist = this.packlist.bind(this);
     }
@@ -14,10 +14,10 @@ export default class TodoInput extends Component {
     // }
 
     packlist(e) {
-        console.log("packlist!");
         if (e.key === "Enter") {
+            console.log("this.state in packlist: ", this.props);
             axios
-                .post("/packlist", this.state.item)
+                .post("/packlist", this.props.item)
                 .then((response) => {
                     console.log("axios response from packlist: ", response);
                     // if (response.data.imageurl) {
@@ -65,6 +65,7 @@ export default class TodoInput extends Component {
                                     placeholder="Add an item"
                                     value={item}
                                     onChange={handleChange}
+                                    onKeyDown={this.packlist}
                                 ></input>
                             </div>
                             <div>
@@ -72,19 +73,6 @@ export default class TodoInput extends Component {
                                     Add
                                 </button>
                             </div>
-                        </div>
-                        <div>
-                            <input
-                                type="text"
-                                className="input-item"
-                                placeholder="Add an item"
-                                value={item}
-                                onChange={handleChange}
-                                onKeyDown={this.packlist}
-                            ></input>
-                        </div>
-                        <div>
-                            <button type="submit">Add item</button>
                         </div>
                     </form>
                 </div>

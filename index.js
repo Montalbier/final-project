@@ -315,7 +315,7 @@ app.post("/popup", (req, res) => {
 
     db.addComment(comment, userId, lat, lng)
         .then(({ rows }) => {
-            // console.log("rows in addComment: ", rows);
+            console.log("rows in addComment: ", rows);
             res.json({ success: true });
         })
         .catch((err) => {
@@ -326,21 +326,21 @@ app.post("/popup", (req, res) => {
 // getting packlist items from db
 
 app.get("/getitems", (req, res) => {
-    // console.log("req.session in /getComments: ", req.session);
     const { userId } = req.session;
 
-    db.getComments(userId)
+    db.getItems(userId)
         .then(({ rows }) => {
-            console.log("rows in getComments: ", rows);
+            console.log("rows in getItems: ", rows);
             res.json(rows);
         })
-        .catch((err) => console.log("ERROR in getComments: ", err));
+        .catch((err) => console.log("ERROR in getItems: ", err));
 });
 
 // adding items from packlist into db
 
 app.post("/packlist", (req, res) => {
     console.log("post request to /packlist happened");
+    console.log("req.body in /packlist: ", req.body);
     const { item } = req.body;
     const { userId } = req.session;
 

@@ -59,7 +59,7 @@ export default class App extends React.Component {
             id: uuid(),
         });
 
-        console.log("this.state: ", this.state);
+        // console.log("this.state: ", this.state);
 
         // axios
         //     .post("/packlist", this.state)

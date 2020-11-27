@@ -8,7 +8,6 @@ import {
     useMapEvent,
 } from "react-leaflet";
 import axios from "./axios";
-// import Search from "react-leaflet-search/lib/Search-v1";
 
 export default function Travelmap() {
     // console.log(Search);
@@ -106,12 +105,6 @@ export default function Travelmap() {
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {/* const searchComponent = (props) =>{" "} */}
-                {/* <Search
-                    position="topleft"
-                    provider="OpenStreetMap"
-                    providerOptions={{ region: "gb" }}
-                /> */}
                 <MyComponent setLocation={setLocation} />
                 {allMarkers &&
                     allMarkers.map((marker) => (
