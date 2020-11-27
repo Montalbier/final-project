@@ -26,13 +26,13 @@ export default class TodoList extends Component {
                             />
                         );
                     })}
-                    <button
+                    {/* <button
                         style={{ width: "80px", marginTop: "30px" }}
                         type="button"
                         onClick={clearList}
                     >
                         Clear list
-                    </button>
+                    </button> */}
                 </ul>
             </div>
         );

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 export default class TodoItem extends Component {
-
     render() {
         const { title, handleDelete } = this.props;
         return (
@@ -12,11 +11,15 @@ export default class TodoItem extends Component {
                     justifyContent: "center",
                 }}
             >
-                <li style={{ textAlign: "link" }}>
-                    <div style={{ width: "280px" }}>
-                        <p style={{ fontSize: "16px", flexWrap: "wrap" }}>
-                            {title}
-                        </p>
+                <li style={{ textAlign: "link", flexWrap: "no-wrap" }}>
+                    <div
+                        style={{
+                            display: "flex",
+                            justifyContent: "space-between",
+                            width: "270px",
+                        }}
+                    >
+                        <p style={{ fontSize: "16px" }}>{title}</p>
                         <i
                             style={{ cursor: "pointer" }}
                             onClick={handleDelete}

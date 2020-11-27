@@ -196,17 +196,6 @@ export default class App extends React.Component {
                             <Route exact path="/" render={() => <About />} />
                         </div>
 
-                        {/* <div>
-                            {this.state.uploaderIsVisible && (
-                                <Uploader
-                                    methodInApp={this.methodInApp}
-                                    imgUrl={this.state.imgUrl}
-                                    toggleComponent={() =>
-                                        this.toggleComponent()
-                                    }
-                                />
-                            )}
-                        </div> */}
                         <div>
                             <Route
                                 path="/deck"
@@ -222,17 +211,43 @@ export default class App extends React.Component {
                             <Route
                                 path="/todo"
                                 render={() => (
-                                    <div>
-                                        <TodoInput
-                                            item={this.state.item}
-                                            handleChange={this.handleChange}
-                                            handleSubmit={this.handleSubmit}
-                                        />
-                                        <TodoList
-                                            items={this.state.items}
-                                            clearList={this.clearList}
-                                            handleDelete={this.handleDelete}
-                                        />
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            width: "100%",
+                                            justifyContent: "space-between",
+                                        }}
+                                    >
+                                        <div>
+                                            <img
+                                                src="/assets/2landscape.png"
+                                                style={{
+                                                    width: "400px",
+                                                    flexWrap: "wrap",
+                                                }}
+                                            />
+                                        </div>
+                                        <div>
+                                            <TodoInput
+                                                item={this.state.item}
+                                                handleChange={this.handleChange}
+                                                handleSubmit={this.handleSubmit}
+                                            />
+                                            <TodoList
+                                                items={this.state.items}
+                                                clearList={this.clearList}
+                                                handleDelete={this.handleDelete}
+                                            />
+                                        </div>
+                                        <div>
+                                            <img
+                                                src="/assets/2landscape.png"
+                                                style={{
+                                                    width: "400px",
+                                                    flexWrap: "wrap",
+                                                }}
+                                            />
+                                        </div>
                                     </div>
                                 )}
                             />

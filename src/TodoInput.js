@@ -65,6 +65,7 @@ export default class TodoInput extends Component {
                                     placeholder="Add an item"
                                     value={item}
                                     onChange={handleChange}
+                                    onKeyDown={this.packlist}
                                 ></input>
                             </div>
                             <div>
@@ -72,19 +73,6 @@ export default class TodoInput extends Component {
                                     Add
                                 </button>
                             </div>
-                        </div>
-                        <div>
-                            <input
-                                type="text"
-                                className="input-item"
-                                placeholder="Add an item"
-                                value={item}
-                                onChange={handleChange}
-                                onKeyDown={this.packlist}
-                            ></input>
-                        </div>
-                        <div>
-                            <button type="submit">Add item</button>
                         </div>
                     </form>
                 </div>
