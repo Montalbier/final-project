@@ -73,6 +73,8 @@ module.exports.getUserById = (id) => {
     return db.query(`SELECT * FROM users WHERE id = $1`, [id]);
 };
 
+// map
+
 module.exports.getComments = (id) => {
     return db.query(`SELECT * FROM popup WHERE user_id = $1`, [id]);
 };
@@ -82,5 +84,19 @@ module.exports.addComment = (comment, user_id, lat, lng) => {
         `INSERT INTO popup (comment, user_id, lat, lng)
         VALUES($1, $2, $3, $4)`,
         [comment, user_id, lat, lng]
+    );
+};
+
+// packlist
+
+module.exports.getItems = (id) => {
+    return db.query(`SELECT * FROM packlist WHERE user_id = $1`, [id]);
+};
+
+module.exports.addItem = (item, user_id) => {
+    return db.query(
+        `INSERT INTO packlist (item, user_id)
+        VALUES($1, $2)`,
+        [item, user_id]
     );
 };

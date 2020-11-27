@@ -72,7 +72,7 @@ export default function Travelmap() {
             if (marker.id == currentMarker.id) {
                 return {
                     ...marker,
-                    // comment: comment + " <button>Delete</button>",
+                    comment: comment,
                 };
             } else {
                 return marker;

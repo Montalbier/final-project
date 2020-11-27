@@ -21,9 +21,15 @@ DROP TABLE IF EXISTS popup CASCADE;
 CREATE TABLE popup(
   id SERIAL PRIMARY KEY,
   comment TEXT,
-  url VARCHAR(255),
   user_id INT REFERENCES users(id) NOT NULL,
   lat real NULL,
   lng real NOT NULL,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+ );
+
+DROP TABLE IF EXISTS packlist CASCADE;
+CREATE TABLE packlist(
+  id SERIAL PRIMARY KEY,
+  item TEXT,
+  user_id INT REFERENCES users(id) NOT NULL
  );

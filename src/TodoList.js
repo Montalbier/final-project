@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import TodoItem from "./TodoItem";
 
 export default class TodoList extends Component {
+    componentDidMount() {
+        console.log("component mounted!");
+    }
+
     render() {
         const { items, clearList, handleDelete } = this.props;
         return (
