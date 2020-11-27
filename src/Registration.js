@@ -97,7 +97,7 @@ export default class Registration extends React.Component {
                             id="login-text"
                             style={{
                                 display: "flex",
-                                justifyContent: "center",
+                                // justifyContent: "",
                             }}
                         >
                             <p style={{ color: "#555b6e" }}>
@@ -112,7 +112,8 @@ export default class Registration extends React.Component {
                                     }}
                                     to="/login"
                                 >
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Login
+                                    <i className="fas fa-sign-in-alt"></i>
+                                    &nbsp;&nbsp;Login
                                 </Link>
                             </p>
                         </div>

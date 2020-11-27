@@ -4,6 +4,7 @@
 }
 
 a {
+    width: 80px;
     color: #c6848f;
 }
 
@@ -233,4 +234,8 @@ ul {
 
 li {
     list-style-type: none;
+}
+
+.fas fa-map-marked-alt {
+    width: 400px;
 }

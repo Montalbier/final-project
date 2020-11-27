@@ -49,8 +49,19 @@ export default class TodoInput extends Component {
                 }}
             >
                 <div>
+                    <div className="good-pack">
+                        <img
+                            style={{ width: "300px", margin: "20px 0 20px 0" }}
+                            src="/assets/goodpack.png"
+                        />
+                    </div>
                     <form onSubmit={handleSubmit}>
-                        <div style={{ display: "flex" }}>
+                        <div
+                            style={{
+                                display: "flex",
+                                justifyContent: "center",
+                            }}
+                        >
                             <div>
                                 <i className="plus"></i>
                             </div>
@@ -58,7 +69,7 @@ export default class TodoInput extends Component {
                                 <input
                                     style={{
                                         marginTop: "0px",
-                                        marginRight: "20px",
+                                        marginRight: "10px",
                                     }}
                                     type="text"
                                     className="input-item"

@@ -152,7 +152,7 @@ export default class App extends React.Component {
                                     style={{ padding: "30px" }}
                                     href="/todo"
                                 >
-                                    Packing
+                                    <i className="fas fa-suitcase"></i>
                                 </a>
                             </h4>
                             <h4>
@@ -161,7 +161,7 @@ export default class App extends React.Component {
                                     style={{ padding: "30px" }}
                                     href="/deck"
                                 >
-                                    Flashcards
+                                    <i className="fas fa-language"></i>
                                 </a>
                             </h4>
                             <div>
@@ -171,10 +171,11 @@ export default class App extends React.Component {
                                         style={{ padding: "30px" }}
                                         href="/map"
                                     >
-                                        Map
+                                        <i className="fas fa-map-marked-alt"></i>
                                     </a>
                                 </h4>
                             </div>
+
                             <div>
                                 <h4>
                                     <a
@@ -182,7 +183,7 @@ export default class App extends React.Component {
                                         style={{ padding: "30px" }}
                                         href="/logout"
                                     >
-                                        Log out
+                                        <i className="fas fa-sign-out-alt"></i>{" "}
                                     </a>
                                 </h4>
                             </div>
