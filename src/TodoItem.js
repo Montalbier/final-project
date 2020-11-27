@@ -12,11 +12,13 @@ export default class TodoItem extends Component {
                 }}
             >
                 <li style={{ textAlign: "link" }}>
-                    <p style={{ fontSize: "16px" }}>{title}</p>
                     <div>
-                        <span onClick={handleDelete}>
-                            <i className="far fa-check-circle"></i>
-                        </span>
+                        <p style={{ fontSize: "16px" }}>{title}</p>
+                        <i
+                            style={{ cursor: "pointer" }}
+                            onClick={handleDelete}
+                            className="far fa-check-circle"
+                        ></i>
                     </div>
                 </li>
             </div>
