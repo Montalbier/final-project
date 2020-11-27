@@ -1,15 +1,17 @@
+/* eslint-disable react/no-unescaped-entities */
 import { BrowserRouter, Route } from "react-router-dom";
 import React from "react";
 import Deck from "./Deck";
 import Travelmap from "./Travelmap";
 import Logo from "./Logo";
-import Profile from "./Profile";
+// import Profile from "./Profile";
 // import ProfilePic from "./ProfilePic";
-import Uploader from "./Uploader";
+// import Uploader from "./Uploader";
 import axios from "./axios";
 import TodoInput from "./TodoInput";
 import TodoList from "./TodoList";
 import uuid from "uuid";
+import About from "./About";
 
 export default class App extends React.Component {
     constructor() {
@@ -148,9 +150,9 @@ export default class App extends React.Component {
                                 <a
                                     className="navbar-text"
                                     style={{ padding: "30px" }}
-                                    href="/"
+                                    href="/todo"
                                 >
-                                    Profile
+                                    Packing
                                 </a>
                             </h4>
                             <h4>
@@ -191,24 +193,10 @@ export default class App extends React.Component {
                     </header>
                     <div className="body">
                         <div>
-                            <Route
-                                exact
-                                path="/"
-                                render={() => (
-                                    <Profile
-                                        imgUrl={this.state.imgUrl}
-                                        first={this.state.first}
-                                        last={this.state.last}
-                                        id={this.state.id}
-                                        toggleComponent={() =>
-                                            this.toggleComponent()
-                                        }
-                                    />
-                                )}
-                            />
+                            <Route exact path="/" render={() => <About />} />
                         </div>
 
-                        <div>
+                        {/* <div>
                             {this.state.uploaderIsVisible && (
                                 <Uploader
                                     methodInApp={this.methodInApp}
@@ -218,7 +206,7 @@ export default class App extends React.Component {
                                     }
                                 />
                             )}
-                        </div>
+                        </div> */}
                         <div>
                             <Route
                                 path="/deck"

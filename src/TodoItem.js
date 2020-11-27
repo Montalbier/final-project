@@ -5,13 +5,21 @@ export default class TodoItem extends Component {
     render() {
         const { title, handleDelete } = this.props;
         return (
-            <div>
-                <li>
-                    <h6>{title}</h6>
+            <div
+                style={{
+                    display: "flex",
+                    width: "100%",
+                    justifyContent: "center",
+                }}
+            >
+                <li style={{ textAlign: "link" }}>
                     <div>
-                        <span onClick={handleDelete}>
-                            <i className="trash" />
-                        </span>
+                        <p style={{ fontSize: "16px" }}>{title}</p>
+                        <i
+                            style={{ cursor: "pointer" }}
+                            onClick={handleDelete}
+                            className="far fa-check-circle"
+                        ></i>
                     </div>
                 </li>
             </div>
